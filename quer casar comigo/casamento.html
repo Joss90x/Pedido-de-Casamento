@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Especial</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .pergunta {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .botoes {
+            display: flex;
+            gap: 20px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        #simBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        #naoBtn {
+            background-color: #ff4444;
+            color: white;
+            position: relative;
+        }
+        
+        .mensagem-amor {
+            font-size: 2.5em;
+            color: white;
+            display: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="pergunta">Veux-tu m'épouser, Jeandra?</div>
+    <div class="mensagem-amor" id="mensagemAmor">Je t'aime!</div>
+    <div class="botoes">
+        <button id="simBtn">Sim</button>
+        <button id="naoBtn">Não</button>
+    </div>
+
+    <script>
+        const naoBtn = document.getElementById('naoBtn');
+        const simBtn = document.getElementById('simBtn');
+        const mensagemAmor = document.getElementById('mensagemAmor');
+
+        naoBtn.addEventListener('mouseover', () => {
+            const maxX = window.innerWidth - naoBtn.offsetWidth;
+            const maxY = window.innerHeight - naoBtn.offsetHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            naoBtn.style.position = 'fixed';
+            naoBtn.style.left = randomX + 'px';
+            naoBtn.style.top = randomY + 'px';
+        });
+
+        simBtn.addEventListener('click', () => {
+            mensagemAmor.style.display = 'block';
+            naoBtn.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
